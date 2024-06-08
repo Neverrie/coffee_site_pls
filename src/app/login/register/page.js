@@ -1,26 +1,25 @@
-"use client"; // Эта директива делает компонент клиентским
-
+'use client'
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import VideoContainer from '../components/VideoContainer';
-import styles from './login.module.css';
+import Header from '../../components/Header';
+import VideoContainer from '../../components/VideoContainer';
+import styles from '../login.module.css';
 import { useRouter } from 'next/navigation';
-import useAuthStore from '../store/store';
-import Link from 'next/link';
+import useAuthStore from '../../store/store';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuthStore();
+  const { register } = useAuthStore();
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === 'user' && password === 'password') {
-      login({ username });
+    // Пример регистрации
+    if (username && password) {
+      register({ username, password });
       router.push('/profile');
     } else {
-      alert('Invalid credentials');
+      alert('Please fill out all fields');
     }
   };
 
@@ -45,15 +44,12 @@ const LoginPage = () => {
             className={styles.input}
           />
           <button type="submit" className={styles.link_button}>
-            Login
-          </button>
-          <Link href="/login/register" className={styles.link_button}>
             Register
-          </Link>
+          </button>
         </form>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
