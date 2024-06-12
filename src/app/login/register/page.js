@@ -5,6 +5,7 @@ import VideoContainer from '../../components/VideoContainer';
 import styles from '../login.module.css';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '../../store/store';
+import Link from 'next/link';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -14,15 +15,15 @@ const RegisterPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Пример регистрации
     if (username && password) {
-      register({ username, password });
+      register({ username, password }); 
+
       router.push('/profile');
     } else {
       alert('Please fill out all fields');
     }
   };
-
+  
   return (
     <div className={styles.container}>
       <VideoContainer src="/ugabuga.mp4" />

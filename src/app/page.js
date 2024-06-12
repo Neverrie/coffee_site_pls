@@ -7,18 +7,18 @@ import styles from './page.module.css';
 import Header from './components/Header';
 import VideoContainer from './components/VideoContainer';
 import useAuthStore from './store/store';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { user } = useAuthStore();
   const router = useRouter();
-  const pathname = usePathname();
 
-  useEffect(() => {
-    if (user && pathname === '/') {
-      router.push('/profile');
-    }
-  }, [user, router, pathname]);
+  // Удалите эффект, который перенаправляет на профиль, если пользователь аутентифицирован
+  // useEffect(() => {
+  //   if (user && router.pathname === '/') {
+  //     router.push('/profile');
+  //   }
+  // }, [user, router]);
 
   return (
     <div className={styles.videoBackground}>

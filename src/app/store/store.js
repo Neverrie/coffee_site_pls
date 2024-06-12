@@ -7,11 +7,12 @@ const useAuthStore = create(
     (set) => ({
       user: null,
       login: (userData) => set({ user: userData }),
+      register: (userData) => set({ user: userData }),
       logout: () => set({ user: null }),
     }),
     {
-      name: 'auth-storage', // Имя ключа для сохранения в локальном хранилище
-      getStorage: () => localStorage, // Используем localStorage для сохранения данных
+      name: 'auth-storage',
+      getStorage: () => localStorage,
     }
   )
 );
