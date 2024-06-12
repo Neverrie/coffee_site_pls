@@ -6,8 +6,8 @@ const useAuthStore = create(
   persist(
     (set) => ({
       user: null,
-      login: (userData) => set({ user: userData }),
-      register: (userData) => set({ user: userData }),
+      login: (userData) => set({ user: { ...userData, userId: userData.userId || null } }),
+      register: (userData) => set({ user: { ...userData, userId: userData.userId || null } }),
       logout: () => set({ user: null }),
     }),
     {

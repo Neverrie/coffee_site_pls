@@ -1,24 +1,17 @@
-// pages/index.js
-"use client"; // Эта директива делает компонент клиентским
+
+"use client"; 
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
 import Header from './components/Header';
 import VideoContainer from './components/VideoContainer';
-import useAuthStore from './store/store';
+import useAuthStore from './services/store';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { user } = useAuthStore();
   const router = useRouter();
-
-  // Удалите эффект, который перенаправляет на профиль, если пользователь аутентифицирован
-  // useEffect(() => {
-  //   if (user && router.pathname === '/') {
-  //     router.push('/profile');
-  //   }
-  // }, [user, router]);
 
   return (
     <div className={styles.videoBackground}>
